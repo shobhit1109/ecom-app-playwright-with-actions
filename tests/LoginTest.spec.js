@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.only('Browser context playwright test', async ({ browser }) => {
+test('Browser context playwright test', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage()
     const userName = page.locator('#username');
@@ -18,11 +18,4 @@ test.only('Browser context playwright test', async ({ browser }) => {
     await userName.fill('')
     await userName.fill('rahulshettyacademy');
     await signIn.click();
-    await page.waitForTimeout(10000);
-});
-
-
-test('Page context playwright test', async ({ page }) => {
-    await page.goto('https:/google.com');
-    await expect(page).toHaveTitle('Google');
 });
