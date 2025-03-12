@@ -20,5 +20,9 @@ test('@Web Client App login', async ({ page }) => {
 
     await appPage.addProductToCart(productName);
     const orderId = await appPage.checkoutProduct(email);
-    await appPage.verifyOrder(orderId);
+    const orderText = await appPage.verifyOrder(orderId);
+    expect(orderId.includes(orderText)).toBeTruthy()
+
+    
+    
 });

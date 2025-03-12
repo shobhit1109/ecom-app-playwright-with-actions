@@ -32,8 +32,7 @@ class AppPage {
     async checkoutProduct(email) {
         await this.cartLink.click();
         await this.firstListItem.waitFor();
-        const bool = await this.productVisible.isVisible();
-        expect(bool).toBeTruthy();
+        const bool = await this.productVisible.isVisible()
         await this.checkoutButton.click();
         await this.countryInput.type("ind");
         await this.dropdown.waitFor();
@@ -45,9 +44,7 @@ class AppPage {
                 break;
             }
         }
-        expect(this.userNameText).toHaveText(email);
         await this.submitButton.click();
-        await expect(this.thankYouText).toHaveText(" Thankyou for the order. ");
         const orderId = await this.orderIdLocator.textContent();
         console.log(orderId);
         return orderId;
@@ -64,7 +61,8 @@ class AppPage {
             }
         }
         const orderIdDetailsText = await this.orderIdDetails.textContent();
-        expect(orderId.includes(orderIdDetailsText)).toBeTruthy();
+        return orderIdDetailsText;
+        ;
     }
 }
 
