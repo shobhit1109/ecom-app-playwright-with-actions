@@ -3,8 +3,8 @@ const LoginPage = require('../pageObjects/LoginPage');
 const AppPage = require('../pageObjects/AppPage');
 
 test('@Web Client App login', async ({ page }) => {
-    const email = "anshika@gmail.com";
-    const password = "Iamking@000";
+    const email = process.env.EMAIL;
+    const password = process.env.PASSWORD;
     const productName = 'ZARA COAT 3';
 
     const loginPage = new LoginPage(page);
